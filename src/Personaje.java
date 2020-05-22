@@ -84,6 +84,22 @@ public class Personaje {
     public void trasladar(int dx, int dy) {
         this.x = this.x + dx;
         this.y = this.y + dy;
+        
+        if(x == 800){
+            x = 800-128;//ancho de pantalla - mayor ancho imagen enemigo 
+        }else{
+            if(x<0){
+              x = 0;          
+            }
+        }
+        
+        if(y  >= 800){
+            y= 600;
+        }else{
+            if(y<0){
+                y = 0;
+            }
+        }
     }
 
     public void pintar(Graphics g, Container con) {
@@ -95,6 +111,11 @@ public class Personaje {
     
     public void mensaje (String msj){
         JOptionPane.showMessageDialog(null , ""+msj);
+    }
+    
+    //Obtiene el centro del jugador
+    public Personaje getCenter(){
+        return new Personaje("", "",(int)(this.getX() + (114/2)), (int)(this.getY() + (128/2)));
     }
 
 }
