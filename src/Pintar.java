@@ -20,7 +20,9 @@ public class Pintar extends Applet {
     final int ANCHO_PANTALLA = 800;
     final int ALTO_PANTALLA = 800;
     ArrayList<Personaje> enemigos = new ArrayList<>();
-    Personaje goku = null, freezer = null, boo = null, vegeta = null, broly = null, kameHa = null;
+    Personaje goku = null;
+    Personaje freezer = null;
+    Personaje boo = null, vegeta = null, broly = null, kameHa = null;
 
     public void init() {
         resize(ANCHO_PANTALLA, ALTO_PANTALLA);
@@ -77,29 +79,31 @@ public class Pintar extends Applet {
         broly.pintar(g, this);
         //broly.mensaje("Hola cacaroto soy " + broly.getNombre());
 
-        int i = 680, desplazamiento = 50;
+        int i = 680, desplazamiento = 20;
 
         while (i > 150) {
             limpiarPantalla(g);
             pintarMundo(g);
             crearHeroe(g);
+            for (int j = 0; j < enemigos.size(); j++) {
+                enemigos.get(j).pintar(g, this);
+                enemigos.get(j).setX(desplazamiento);
+                //esperar(500);
+            }
             
-            freezer.pintar(g, this);
-            freezer.setX(freezer.getX() - desplazamiento);
-            esperar(100);
-
-            boo.pintar(g, this);
-            boo.setX(boo.getX() - desplazamiento);
-            esperar(100);
-
-            vegeta.pintar(g, this);
-            vegeta.setX(vegeta.getX() - desplazamiento);
-            esperar(100);
-
-            broly.pintar(g, this);
-            broly.setX(broly.getX() - desplazamiento);
-            esperar(100);
             i -= desplazamiento;
+
+//            freezer.pintar(g, this);
+//            freezer.setX(freezer.getX() - desplazamiento);
+//
+//            boo.pintar(g, this);
+//            boo.setX(boo.getX() - desplazamiento);
+//
+//            vegeta.pintar(g, this);
+//            vegeta.setX(vegeta.getX() - desplazamiento);
+//
+//            broly.pintar(g, this);
+//            broly.setX(broly.getX() - desplazamiento);
         }
 
     }

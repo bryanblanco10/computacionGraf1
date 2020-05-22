@@ -92,31 +92,6 @@ public class Personaje {
 
     }
 
-    public synchronized void lanzarKameHa(int kameHa) {
-        while (estado_juego == false) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-            }
-
-        }
-        estado_juego = false;
-        notifyAll();
-
-    }
-
-    public synchronized void apuntar() {
-        while (estado_juego == true) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-            }
-
-        }
-        estado_juego = true;
-        notifyAll();
-
-    }
     
     public void mensaje (String msj){
         JOptionPane.showMessageDialog(null , ""+msj);
