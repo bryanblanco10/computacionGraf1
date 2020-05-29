@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Jesus%20Salcedo/Documents/NetBeansProjects/computacionGraf1/src/Pintar.java</file>
             <file>file:/C:/Users/Jesus%20Salcedo/Documents/NetBeansProjects/computacionGraf1/src/Personaje.java</file>
+=======
+            <file>file:/C:/Users/dehoyos/Documents/NetBeansProjects/computacionGraf1/src/Sonido.java</file>
+            <file>file:/C:/Users/dehoyos/Documents/NetBeansProjects/computacionGraf1/src/Animacion.java</file>
+            <file>file:/C:/Users/dehoyos/Documents/NetBeansProjects/computacionGraf1/src/Personaje.java</file>
+            <file>file:/C:/Users/dehoyos/Documents/NetBeansProjects/computacionGraf1/src/Pintar.java</file>
+>>>>>>> 3fdbbb2fbb6882e3e54fcd363c9a07d770d8675e
         </group>
     </open-files>
 </project-private>
