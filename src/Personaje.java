@@ -148,7 +148,7 @@ public class Personaje {
     
     //Obtiene el centro del jugador
     public Personaje getCenter(){
-        return new Personaje("", "",(int)(this.getX() + (114/2)), (int)(this.getY() + (128/2)));
+        return new Personaje("", "",(int)(this.getX() + (imagenIcono.getIconWidth()/2)), (int)(this.getY() + (imagenIcono.getIconHeight()/2)));
     }
 
 }
