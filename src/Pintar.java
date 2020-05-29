@@ -107,6 +107,13 @@ public class Pintar extends Applet implements KeyListener, Runnable{
         for(int i = 0; i < numero_iteraciones; i++){
             if(!enemigos.isEmpty()){
                 enemigos.get(i).trasladar(dx, dy);
+                
+                if(enemigos.get(i).getX()== 0){
+                    enemigos.remove(i);
+                }else{
+                    //detectar colisiones
+                    colisionaEnemigoPowerUp(i);
+                }
             }
             
             if(enemigos.size() < numero_iteraciones){
@@ -115,56 +122,21 @@ public class Pintar extends Applet implements KeyListener, Runnable{
         }
     }
 
-    /*private void crearEnemigos(Graphics g) {
-
-        freezer = new Personaje("Freezer", "01-enemigo.png", 680, 90);
-        enemigos.add(freezer);
-        freezer.pintar(g, this);
-        //freezer.mensaje("Hola cacaroto soy " + freezer.getNombre());
-        esperar(500);
-        boo = new Personaje("Majin Boo", "02-enemigo.png ", 680, 260);
-        enemigos.add(boo);
-        boo.pintar(g, this);
-        //boo.mensaje("Hola cacaroto soy " + boo.getNombre());
-        esperar(500);
-        vegeta = new Personaje("Vegeta", "04-enemigo.png", 680, 430);
-        enemigos.add(vegeta);
-        vegeta.pintar(g, this);
-        //vegeta.mensaje("Hola cacaroto soy " + vegeta.getNombre() + "\n Estupido Sayayin");
-        esperar(500);
-        broly = new Personaje("Broly", "03-enemigo.png", 680, 590);
-        enemigos.add(broly);
-        broly.pintar(g, this);
-        //broly.mensaje("Hola cacaroto soy " + broly.getNombre());
-
-        int i = 680, desplazamiento = 20;
-
-        while (i > 150) {
-            limpiarPantalla(g);
-            pintarMundo(g);
-            crearHeroe(g);
-            for (int j = 0; j < enemigos.size(); j++) {
-                enemigos.get(j).pintar(g, this);
-                enemigos.get(j).setX(desplazamiento);
-                //esperar(500);
+    
+    public void colisionaEnemigoPowerUp(int indice){
+        try {
+            for(int i = 0; i < kameHa.size(); i++){
+                if(enemigos.get(indice).getRectangle().intersects(kameHa.get(i).getRectangle())){
+                    enemigos.remove(indice);//destruyo el enemigo
+                    kameHa.remove(i);//destruyo la bala de cañon   
+                }
             }
-            
-            i -= desplazamiento;
+        } catch (Exception e) {
+            System.err.println("Han Ocurrido en la colision Enemigo <-> kame ha indice(" +indice +") " + e.getLocalizedMessage());
 
-//            freezer.pintar(g, this);
-//            freezer.setX(freezer.getX() - desplazamiento);
-//
-//            boo.pintar(g, this);
-//            boo.setX(boo.getX() - desplazamiento);
-//
-//            vegeta.pintar(g, this);
-//            vegeta.setX(vegeta.getX() - desplazamiento);
-//
-//            broly.pintar(g, this);
-//            broly.setX(broly.getX() - desplazamiento);
         }
+    }
 
-    }*/
 
     private void limpiarPantalla(Graphics g) {
         g.clearRect(0, 0, ANCHO_PANTALLA, ALTO_PANTALLA);
@@ -230,7 +202,7 @@ public class Pintar extends Applet implements KeyListener, Runnable{
                 break;
 
             case KeyEvent.VK_SPACE:
-                kameHa.add(new Personaje("Hame-Ha", "kame-ha.png", 50, goku.getCenter().getY()));
+                kameHa.add(new Personaje("Hame-Ha", "kame-ha.png", 40, goku.getCenter().getY()));
                 break;
 
             default:

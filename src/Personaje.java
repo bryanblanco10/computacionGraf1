@@ -2,6 +2,7 @@
 import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -86,15 +87,15 @@ public class Personaje {
         this.y = this.y + dy;
         
         if(x == 800){
-            x = 800-128;//ancho de pantalla - mayor ancho imagen enemigo 
+            x = 800 - imagenIcono.getIconWidth();//ancho de pantalla - mayor ancho imagen enemigo 
         }else{
-            if(x<0){
+            if(x < 0){
               x = 0;          
             }
         }
         
-        if(y  >= 800){
-            y= 600;
+        if(y + imagenIcono.getIconHeight() >= 670){
+            y = 670 - imagenIcono.getIconHeight();
         }else{
             if(y<0){
                 y = 0;
@@ -111,6 +112,13 @@ public class Personaje {
     
     public void mensaje (String msj){
         JOptionPane.showMessageDialog(null , ""+msj);
+    }
+    
+    //método que genera un rectangulo
+    public Rectangle getRectangle(){
+        int anchoImagen = imagenIcono.getIconWidth();
+        int altoImagen = imagenIcono.getIconHeight();
+        return  (new Rectangle(x, y, anchoImagen, altoImagen));
     }
     
     //Obtiene el centro del jugador
